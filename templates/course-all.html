@@ -1,0 +1,94 @@
+{% extends "home-base.html"%}
+{% block title %}All Courses{% endblock %}
+{% block head%}
+  {{ super() }}
+{% endblock%}
+{% block page_content%}
+
+<!-- Page Content -->
+ <div class="container">
+   <h1 class="mt-5"><i class="fa fa-search-plus" aria-hidden="true"></i> Courses</h1>
+   <ul>
+       {% for course in courses %}
+         <li>{{course}}</li>
+       {% endfor%}
+       <!-- Button trigger modal -->
+       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+         MISY350
+       </button>
+
+       <!-- Modal -->
+       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">MISY350</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               Covers concepts related to client side development, including cascading style sheets and JavaScript.
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             </div>
+           </div>
+         </div>
+       </div>
+       <!-- Button trigger modal -->
+       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+         ACCT208
+       </button>
+
+       <!-- Modal -->
+       <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel2">ACCT208</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               Introduction to managerial accounting. Topics: manufacturing accounting, cost-volume-profit analysis, job-order accounting, budgeting,
+               standard costs and variance analysis, contribution approach to decision analysis, absorption and variable costing.             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             </div>
+           </div>
+         </div>
+       </div>
+       <!-- Button trigger modal -->
+       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
+         FINC311
+       </button>
+
+       <!-- Modal -->
+       <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel3">FINC311</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               Introduces fundamental techniques and concepts related to the financial management of business firms. Topics include the time value of
+                money, valuation, capital budgeting, working capital management, cost of capital, capital structure analysis, short and long term financing.             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             </div>
+           </div>
+         </div>
+       </div>
+   </ul>
+ </div>
+
+
+
+
+
+{% endblock%}
