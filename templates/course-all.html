@@ -1,94 +1,39 @@
-{% extends "home-base.html"%}
+{% extends "home-base.html" %}
 {% block title %}All Courses{% endblock %}
-{% block head%}
-  {{ super() }}
-{% endblock%}
-{% block page_content%}
-
-<!-- Page Content -->
- <div class="container">
-   <h1 class="mt-5"><i class="fa fa-search-plus" aria-hidden="true"></i> Courses</h1>
-   <ul>
-       {% for course in courses %}
-         <li>{{course}}</li>
-       {% endfor%}
-       <!-- Button trigger modal -->
-       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-         MISY350
-       </button>
-
-       <!-- Modal -->
-       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">MISY350</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-               Covers concepts related to client side development, including cascading style sheets and JavaScript.
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             </div>
-           </div>
-         </div>
-       </div>
-       <!-- Button trigger modal -->
-       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
-         ACCT208
-       </button>
-
-       <!-- Modal -->
-       <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel2">ACCT208</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-               Introduction to managerial accounting. Topics: manufacturing accounting, cost-volume-profit analysis, job-order accounting, budgeting,
-               standard costs and variance analysis, contribution approach to decision analysis, absorption and variable costing.             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             </div>
-           </div>
-         </div>
-       </div>
-       <!-- Button trigger modal -->
-       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
-         FINC311
-       </button>
-
-       <!-- Modal -->
-       <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel3">FINC311</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-               Introduces fundamental techniques and concepts related to the financial management of business firms. Topics include the time value of
-                money, valuation, capital budgeting, working capital management, cost of capital, capital structure analysis, short and long term financing.             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             </div>
-           </div>
-         </div>
-       </div>
-   </ul>
- </div>
+{% block page_content %}
 
 
-
-
-
-{% endblock%}
+<div class="container">
+   <h1 class="mt-5"><i class="fa fa-pencil" aria-hidden="true"></i> Course Directory</h1>
+   <div class="row bottom-margin">
+     <a href="/course-directory/add" class="btn btn-primary" role="button" aria-disabeled="true">Add Course</a>
+   </div>
+{% if courses %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Course ID</th>
+      <th>Course Number</th>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for course in courses %}
+  <tr>
+    <th scope="row">{{course.id}}</th>
+        <td>{{course.course_number}}</td>
+        <td>{{course.title}}</td>
+        <td>{{course.description}}</td>
+        <td>
+          <a href="/course-directory/edit/{{course.id}}" class ="btn btn-success" role="button" aria-disabled="true"> Edit</a>
+        </td>
+  </tr>
+   {% endfor %}
+ </tbody>
+</table>
+{% else %}
+<h3>There are no courses in the directory yet.</h3>
+{% endif %}
+</div>
+{% endblock %}
