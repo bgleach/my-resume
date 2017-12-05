@@ -72,6 +72,16 @@ def edit_professor(id):
         db.session.commit()
         return redirect(url_for('show_all_professors'))
 
+@app.route('/professors/delete/<int:id>', methods=['GET', 'POST'])
+def delete_professor(id):
+    professor = Professor.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('professor-delete.html', professor=professor)
+    if request.method == 'POST':
+        db.session.delete(professor)
+        db.session.commit()
+        return redirect(url_for('show_all_professors'))
+
 
 @app.route('/course-directory/edit/<int:id>', methods=['GET', 'POST'])
 def edit_course(id):
@@ -111,6 +121,16 @@ def add_courses():
 
         course = Course(course_number=course_number, title=title, description=description)
         db.session.add(course)
+        db.session.commit()
+        return redirect(url_for('show_all_courses'))
+
+@app.route('/course-directory/delete/<int:id>', methods=['GET', 'POST'])
+def delete_course(id):
+    course = Course.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('course-delete.html', course=course)
+    if request.method == 'POST':
+        db.session.delete(course)
         db.session.commit()
         return redirect(url_for('show_all_courses'))
 
